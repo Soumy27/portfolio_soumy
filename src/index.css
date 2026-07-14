@@ -79,6 +79,17 @@ html {
    choreography (in gsapScroll.ts) fades it out past the hero so it never
    overlaps the sections below. The signal trail stays desktop-only. */
 
+/* Touch devices: the character is a fixed, full-viewport layer and the
+   hover target is a big circle in the middle of it. Neither is useful
+   without a mouse, so make them transparent to touch — otherwise they can
+   swallow swipes and make the page feel like it won't scroll. */
+@media (max-width: 1024px) {
+  .character-model,
+  .character-hover {
+    pointer-events: none !important;
+  }
+}
+
 body {
   font-family: var(--font-sans);
   color: var(--color-fog);

@@ -58,7 +58,9 @@ export default function WorkHorizontal() {
         {projects.map((p, i) => (
           <article
             key={p.title}
-            className="flex min-h-[100dvh] w-screen shrink-0 flex-col justify-center gap-8 border-r border-white/5 px-6 pt-28 pb-16 md:w-[62vw] md:px-16 md:pt-36"
+            /* full-height panels are only for the pinned desktop pan; on
+               mobile they'd leave a screen of dead space per project */
+            className="flex w-screen shrink-0 flex-col justify-center gap-8 border-b border-white/5 px-6 pt-24 pb-14 last:border-b-0 md:min-h-[100dvh] md:w-[62vw] md:border-b-0 md:border-r md:px-16 md:pt-36 md:pb-16"
           >
             <header className="flex items-start justify-between gap-6">
               <span className="text-6xl font-bold tracking-tight text-fog md:text-7xl">
@@ -98,7 +100,7 @@ export default function WorkHorizontal() {
         ))}
 
         {/* closing panel */}
-        <div className="flex min-h-[50vh] w-screen shrink-0 flex-col items-center justify-center gap-6 px-6 md:min-h-[100dvh] md:w-[38vw]">
+        <div className="flex w-screen shrink-0 flex-col items-center justify-center gap-6 px-6 py-24 md:min-h-[100dvh] md:w-[38vw] md:py-0">
           <p className="text-2xl font-semibold text-fog">Want to see more?</p>
           <a
             href={profile.github}

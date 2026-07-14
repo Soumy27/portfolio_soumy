@@ -16,7 +16,11 @@ export default function About() {
   const words = profile.aboutStatement.split(" ");
 
   useEffect(() => {
-    if (reduced || !ref.current) return;
+    // The word-by-word reveal is scroll-scrubbed and only finishes once the
+    // paragraph is well up the viewport — on phones that leaves it sitting
+    // grey at the natural reading position, so below lg the text is just
+    // plain white (spans keep their default opacity).
+    if (reduced || !ref.current || window.innerWidth < 1024) return;
     const ctx = gsap.context(() => {
       gsap.fromTo(
         ref.current!.querySelectorAll("span"),

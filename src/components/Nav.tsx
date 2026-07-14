@@ -3,7 +3,9 @@ import { profile } from "../data/projects";
 export default function Nav() {
   const initials = profile.firstName[0] + profile.lastName[0];
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 h-16">
+    /* mobile gets a scrim so content scrolling underneath doesn't collide
+       with the links; desktop keeps the clean transparent nav */
+    <header className="fixed top-0 left-0 right-0 z-50 h-16 bg-ink/85 backdrop-blur-sm md:bg-transparent md:backdrop-blur-none">
       <nav className="mx-auto flex h-full max-w-[1500px] items-center justify-between px-6 md:px-10">
         <a href="#top" className="text-base font-bold tracking-wide text-fog">
           {initials}
