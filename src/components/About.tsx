@@ -42,7 +42,9 @@ export default function About() {
   }, [reduced]);
 
   return (
-    <section id="about" className="about-section relative flex min-h-[100dvh] items-center bg-gradient-to-t from-ink/90 via-ink/60 to-ink/10 lg:bg-none">
+    /* full-height only on desktop, where the character's scroll timeline is
+       tied to this section; on mobile it just left a screen of dead space */
+    <section id="about" className="about-section relative flex items-center bg-gradient-to-t from-ink/90 via-ink/60 to-ink/10 py-24 lg:min-h-[100dvh] lg:bg-none lg:py-0">
       <div className="about-me mx-auto grid w-full max-w-[1400px] gap-10 px-6 md:px-10 lg:grid-cols-2">
         {/* character sits here on desktop; single column below lg */}
         <div aria-hidden="true" className="hidden lg:block" />

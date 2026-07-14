@@ -42,7 +42,9 @@ export default function WorkHorizontal() {
 
   return (
     <section id="work" ref={wrap} className="relative overflow-hidden">
-      <div className="pointer-events-none absolute left-6 top-20 z-20 md:left-14">
+      {/* sits in the flow on mobile (an absolute heading collided with the
+          first card's number); pinned top-left for the desktop pan */}
+      <div className="pointer-events-none relative z-20 px-6 pt-24 md:absolute md:left-14 md:top-20 md:px-0 md:pt-0">
         <h2 className="text-4xl font-semibold tracking-tighter text-fog md:text-6xl">
           My <span className="text-pulse">Work</span>
         </h2>
@@ -60,7 +62,7 @@ export default function WorkHorizontal() {
             key={p.title}
             /* full-height panels are only for the pinned desktop pan; on
                mobile they'd leave a screen of dead space per project */
-            className="flex w-screen shrink-0 flex-col justify-center gap-8 border-b border-white/5 px-6 pt-24 pb-14 last:border-b-0 md:min-h-[100dvh] md:w-[62vw] md:border-b-0 md:border-r md:px-16 md:pt-36 md:pb-16"
+            className="flex w-screen shrink-0 flex-col justify-center gap-8 border-b border-white/5 px-6 py-10 last:border-b-0 md:min-h-[100dvh] md:w-[62vw] md:border-b-0 md:border-r md:px-16 md:pt-36 md:pb-16"
           >
             <header className="flex items-start justify-between gap-6">
               <span className="text-6xl font-bold tracking-tight text-fog md:text-7xl">

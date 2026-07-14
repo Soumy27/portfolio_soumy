@@ -148,7 +148,7 @@ body {
 }
 
 .marquee-track {
-  animation: marquee-x 14s linear infinite;
+  animation: marquee-x 26s linear infinite;
 }
 
 /* Hero role swap */

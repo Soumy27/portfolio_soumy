@@ -15,7 +15,7 @@ export default function Loader({ onDone }: { onDone: () => void }) {
     }
     let raf = 0;
     const start = performance.now();
-    const duration = 1900;
+    const duration = 2800;
     const tick = (now: number) => {
       const p = Math.min(1, (now - start) / duration);
       // ease-out so the count slows near the end like real loading

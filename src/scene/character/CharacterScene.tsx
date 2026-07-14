@@ -41,7 +41,9 @@ const CharacterScene = () => {
       powerPreference: "high-performance",
     });
     renderer.setSize(container.width, container.height);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    // phones often report DPR 3; rendering the character at 2x there is a lot
+    // of GPU work for little visible gain, and it costs scroll smoothness
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, window.innerWidth <= 1024 ? 1.5 : 2));
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
     renderer.toneMappingExposure = 1;
     canvasDiv.current.appendChild(renderer.domElement);
@@ -129,6 +131,15 @@ const CharacterScene = () => {
     let raf = 0;
     const animate = () => {
       raf = requestAnimationFrame(animate);
+      // Past the hero the character is faded out (gsap sets visibility via
+      // autoAlpha), but the scene was still being skinned and re-rendered
+      // every frame — the main cause of choppy scrolling on phones. Skip all
+      // of it while it can't be seen.
+      const host = canvasDiv.current;
+      if (host && (host.style.visibility === "hidden" || host.style.opacity === "0")) {
+        clock.getDelta(); // keep delta from ballooning while paused
+        return;
+      }
       if (headBone) {
         handleHeadRotation(
           headBone,

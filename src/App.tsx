@@ -17,7 +17,7 @@ export default function App() {
   // hard fallback: the 3D character's heavy decode can starve the
   // loader's animation timer, so dismiss it after a max wait regardless
   useEffect(() => {
-    const t = window.setTimeout(() => setLoaded(true), 3200);
+    const t = window.setTimeout(() => setLoaded(true), 4200);
     return () => clearTimeout(t);
   }, []);
 
