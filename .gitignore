@@ -5,8 +5,7 @@ node_modules
 dist
 *.tsbuildinfo
 
-# local tooling / editor
-.claude
+# editor
 .vscode
 .idea
 
